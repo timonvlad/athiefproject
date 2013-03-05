@@ -12,4 +12,5 @@
 	<string name="maincheckboxerror">No sending parameteres are checked in CheckBoxes!</string>
 	<string name="mailsendset">E-mail send settings</string>
 	<string name="smssendset">Sms send settings</string>
+	<string name="gpsoffed">GPS was not enabled</string>
 </resources>
