@@ -2,12 +2,14 @@ package tsysv.anti.ttt;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class MainActivity extends Activity {
@@ -92,6 +94,22 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
+				Boolean checked_sms = getSharedPreferences("antithief", MODE_PRIVATE)
+						.getBoolean("checkedsms", false);
+				Boolean checked_mail = getSharedPreferences("antithief", MODE_PRIVATE)
+						.getBoolean("checkedmail", false);
+				if (checked_sms){
+					Intent i = new Intent(getApplicationContext(), SmsActivity.class);
+					startActivity(i);
+				}
+				else if (checked_mail){
+					Intent i = new Intent(getApplicationContext(), MailActivity.class);
+					startActivity(i);
+				}
+				else{
+					Toast.makeText(getApplicationContext(), getResources()
+							.getString(R.string.maincheckboxerror), Toast.LENGTH_LONG).show();
+				}
 				
 				
 			}

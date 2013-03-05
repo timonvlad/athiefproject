@@ -24,9 +24,10 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080005;
+        public static final int action_settings=0x7f080006;
         public static final int cbsendmail=0x7f080002;
         public static final int cbsendsms=0x7f080003;
+        public static final int mailsendset=0x7f080005;
         public static final int mainnext=0x7f080001;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080004;
@@ -45,9 +46,12 @@ public final class R {
         public static final int checkboxMail=0x7f050005;
         public static final int checkboxSms=0x7f050006;
         public static final int hello_world=0x7f050002;
+        public static final int mailsendset=0x7f050009;
+        public static final int maincheckboxerror=0x7f050008;
         public static final int mainscreenAbout=0x7f050007;
         public static final int mainscreenTEXT=0x7f050003;
         public static final int next=0x7f050004;
+        public static final int smssendset=0x7f05000a;
     }
     public static final class style {
         /** 
