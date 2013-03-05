@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Anti Thief</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="mainscreenTEXT">ANTI THIEF Application</string>
+    <string name="next">Next</string>
+    <string name="checkboxMail">Send GPS to e-mail</string>
+    <string name="checkboxSms">Send GPS by sms</string>
+    <string name="mainscreenAbout">Every time your phone is switched on - application writes gps-coordinates on SD-card of your phone. And then according to your Settings, sends them by mail or(and) by sms &#8230;</string>
+	<string name="maincheckboxerror">No sending parameteres are checked in CheckBoxes!</string>
+	<string name="mailsendset">E-mail send settings</string>
+	<string name="smssendset">Sms send settings</string>
+	<string name="gpsoffed">GPS was not enabled</string>
+	<string name="nointernet">There is no internet connection</string>
+	<string name="gpsalerttest">Test GPS send</string>
+	<string name="sendtesttv">Do you want to run test send?</string>
+	<string name="sendtestyes">Yes</string>
+	<string name="sendtestno">No</string>
+	<string name="hintemail">email@email.XX</string>
+	<string name="hintemailiswr">Typed email addr. is invalid</string>
+	<string name="hintsmsph">international phone num.</string>
+	<string name="hintsmsiswr">Typed phone num. is invalid</string>
+	<string name="gps">GPS is </string>
+</resources>
