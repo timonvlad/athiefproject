@@ -26,4 +26,18 @@
         android:layout_centerHorizontal="true"
         android:text="@string/next" />
 
+    <EditText
+        android:id="@+id/emailhint"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mailsendset"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp"
+        android:ems="10"
+        android:hint="@string/hintemail"
+        android:inputType="textEmailAddress" >
+
+        <requestFocus />
+    </EditText>
+
 </RelativeLayout>

@@ -26,4 +26,14 @@
         android:layout_centerHorizontal="true"
         android:text="@string/next" />
 
+    <EditText
+        android:id="@+id/hintsmsphone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mailsendset"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/hintsmsph"
+        android:inputType="phone" />
+
 </RelativeLayout>

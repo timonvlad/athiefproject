@@ -13,4 +13,14 @@
 	<string name="mailsendset">E-mail send settings</string>
 	<string name="smssendset">Sms send settings</string>
 	<string name="gpsoffed">GPS was not enabled</string>
+	<string name="nointernet">There is no internet connection</string>
+	<string name="gpsalerttest">Test GPS send</string>
+	<string name="sendtesttv">Do you want to run test send?</string>
+	<string name="sendtestyes">Yes</string>
+	<string name="sendtestno">No</string>
+	<string name="hintemail">email@email.XX</string>
+	<string name="hintemailiswr">Typed email addr. is invalid</string>
+	<string name="hintsmsph">international phone num.</string>
+	<string name="hintsmsiswr">Typed phone num. is invalid</string>
+	<string name="gps">GPS is </string>
 </resources>
