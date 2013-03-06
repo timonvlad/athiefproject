@@ -4,7 +4,6 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
-import android.widget.Toast;
 
 
 	public class BootCoordService extends Service {
@@ -25,6 +24,8 @@ import android.widget.Toast;
 	            }
 	            else
 	            {
+	          //  	TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+	          //  	Toast.makeText(getApplicationContext(), "SIM is " + telephonyManager.getSimSerialNumber(), Toast.LENGTH_LONG).show();
 	            	stopSelf();
 	            }                   
 	        }
@@ -42,6 +43,10 @@ import android.widget.Toast;
 	    
 	@Override
 	public void onCreate() {
+		
+		
+		
+		
 		gps = new GPSTracker(tsysv.anti.ttt.BootCoordService.this);
 		 
         // check if GPS enabled
@@ -51,12 +56,14 @@ import android.widget.Toast;
             double longitude = gps.getLongitude();
 
             // \n is for new line
-            Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " 
-            + longitude, Toast.LENGTH_LONG).show();
+        //    Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " 
+       //     + longitude, Toast.LENGTH_LONG).show();
             
             getSharedPreferences("antithief", MODE_PRIVATE).edit()
 			.putString("gpscoord", "http://maps.google.ru/maps?q=" + latitude + "," + longitude)
 			.commit();
+            mHandlerTime.removeCallbacks(mUpdateTimeTask);
+    		mHandlerTime.postDelayed(mUpdateTimeTask, 30000);
           
          }else{
 
@@ -72,6 +79,7 @@ import android.widget.Toast;
 	@Override
 	public void onDestroy() {
 	 	super.onDestroy();
+
 	 	IntentService = new Intent(getApplicationContext(), tsysv.anti.ttt.GPSService.class).setAction("GPS_BOOT");
         getApplicationContext().startService(IntentService);
 	}

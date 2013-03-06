@@ -6,6 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="mainscreenTEXT">ANTI THIEF Application</string>
     <string name="next">Next</string>
+    <string name="cancel">Cancel</string>
     <string name="checkboxMail">Send GPS to e-mail</string>
     <string name="checkboxSms">Send GPS by sms</string>
     <string name="mainscreenAbout">Every time your phone is switched on - application writes gps-coordinates on SD-card of your phone. And then according to your Settings, sends them by mail or(and) by sms &#8230;</string>
@@ -24,4 +25,8 @@
 	<string name="hintsmsiswr">Typed phone num. is invalid</string>
 	<string name="gps">GPS is </string>
 	<string name="ggg">GPS or aGPS is not available! Please Enable it in your Settings. Attempts remaining &#8230; </string>
+	<string name="gpset">GPS settings </string>
+	<string name="gpsett">GPS is not enabled. Do you want to go to settings menu? </string>
+	<string name="cbsim">Send GPS only if SIM was changed</string>
+	
 </resources>

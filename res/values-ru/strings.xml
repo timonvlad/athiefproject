@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Анти Вор</string>
+    <string name="action_settings">Настройки</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="mainscreenTEXT">Приложение АНТИ ВОР</string>
+    <string name="next">Далее</string>
+    <string name="cancel">Отмена</string>
+    <string name="checkboxMail">Отправить GPS на e-mail</string>
+    <string name="checkboxSms">Отправить GPS в СМС</string>
+    <string name="mainscreenAbout">Каждый раз когда вы включаете телефон - приложение в автоматическом режиме определяет местоположение GPS. Далее, согласно Ваших настроек (отправка смс или email), оно отправляет координаты на указанные адреса &#8230;</string>
+	<string name="maincheckboxerror">Параметры отправки не выбраны! (Поставьте нужный Вам флажок)</string>
+	<string name="mailsendset">Параметры отправки E-mail</string>
+	<string name="smssendset">Параметры отправки Sms</string>
+	<string name="gpsoffed">GPS не активирован</string>
+	<string name="nointernet">Нет работающего интернет соединения</string>
+	<string name="gpsalerttest">Тестовая отправка GPS</string>
+	<string name="sendtesttv">Хотите ли Вы произвести тестовую отправку координат?</string>
+	<string name="sendtestyes">Да</string>
+	<string name="sendtestno">Нет</string>
+	<string name="hintemail">email@email.XX</string>
+	<string name="hintemailiswr">Введенный email адрес имеет неправильный формат</string>
+	<string name="hintsmsph">Номер телефона в международном формате</string>
+	<string name="hintsmsiswr">Введенный номер имеет неправильный формат</string>
+	<string name="gps">GPS  </string>
+	<string name="ggg">GPS или aGPS не активированы! Пожалуйста активируйте GPS в настройках. Осталось попыток подключения &#8230; </string>
+	<string name="gpset">Настройки GPS </string>
+	<string name="gpsett">GPS не активирован. Хотите перейти в соответствующий пункт настроек? </string>
+	<string name="cbsim">Отправлять GPS только если была вставлена другая SIM карта</string>
+	
+</resources>

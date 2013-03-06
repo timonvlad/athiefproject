@@ -13,6 +13,10 @@ import android.content.Intent;
 	public void onReceive(Context context, Intent intent)
 	{		
 	    if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
+	    	
+	    	
+	    	
+	    	
 
         	IntentService = new Intent(context, tsysv.anti.ttt.BootCoordService.class);
             context.startService(IntentService);

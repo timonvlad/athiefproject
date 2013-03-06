@@ -3,7 +3,6 @@ package tsysv.anti.ttt;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +25,7 @@ public class MainActivity extends Activity {
 				.getBoolean("checkedsms", false);
 		Boolean checked_mail = getSharedPreferences("antithief", MODE_PRIVATE)
 				.getBoolean("checkedmail", false);
+		
 		
 		check_mail = (CheckBox) findViewById(R.id.cbsendmail);
 		check_sms = (CheckBox) findViewById(R.id.cbsendsms);
@@ -51,15 +51,15 @@ public class MainActivity extends Activity {
 					getSharedPreferences("antithief", MODE_PRIVATE).edit()
 					.putBoolean("checkedsms", true)
 					.commit();
-					Log.v("CHECKED SMS", "is - " + getSharedPreferences("antithief", MODE_PRIVATE)
-				.getBoolean("checkedsms", false));
+					//Log.v("CHECKED SMS", "is - " + getSharedPreferences("antithief", MODE_PRIVATE)
+			//	.getBoolean("checkedsms", false));
 				}
 				else{
 					getSharedPreferences("antithief", MODE_PRIVATE).edit()
 					.putBoolean("checkedsms", false)
 					.commit();
-					Log.v("CHECKED SMS", "is - " + getSharedPreferences("antithief", MODE_PRIVATE)
-				.getBoolean("checkedsms", false));
+				//	Log.v("CHECKED SMS", "is - " + getSharedPreferences("antithief", MODE_PRIVATE)
+			//	.getBoolean("checkedsms", false));
 				}
 				
 			}
@@ -73,20 +73,21 @@ public class MainActivity extends Activity {
 					getSharedPreferences("antithief", MODE_PRIVATE).edit()
 					.putBoolean("checkedmail", true)
 					.commit();
-					Log.v("CHECKED mail", "is - " + getSharedPreferences("antithief", MODE_PRIVATE)
-				.getBoolean("checkedmail", false));
+			//		Log.v("CHECKED mail", "is - " + getSharedPreferences("antithief", MODE_PRIVATE)
+			//	.getBoolean("checkedmail", false));
 				}
 				else{
 					getSharedPreferences("antithief", MODE_PRIVATE).edit()
 					.putBoolean("checkedmail", false)
 					.commit();
-					Log.v("CHECKED mail", "is - " + getSharedPreferences("antithief", MODE_PRIVATE)
-				.getBoolean("checkedmail", false));
+			//		Log.v("CHECKED mail", "is - " + getSharedPreferences("antithief", MODE_PRIVATE)
+			//	.getBoolean("checkedmail", false));
 				}
 				
 			}
 		});
-		
+		/////////////////////
+
 		
 		mainnext = (Button) findViewById(R.id.mainnext);
 		mainnext.setOnClickListener(new View.OnClickListener() {

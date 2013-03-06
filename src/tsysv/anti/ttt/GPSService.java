@@ -128,19 +128,20 @@ import android.widget.Toast;
                 	           	     
              	    	
                 	 if(m.send()) {
-                		 Log.v("MAIL", "SENT");
+                //		 Log.v("MAIL", "SENT");
+                		 gps.stopUsingGPS();
                 	 } 
                 	 else {
-                		 Log.v("MAIL", "NOT SENT");
-                		 Toast.makeText(getApplicationContext(), getResources().getString(R.string.nointernet), Toast.LENGTH_LONG).show();
+                //		 Log.v("MAIL", "NOT SENT");
+                	//	 Toast.makeText(getApplicationContext(), getResources().getString(R.string.nointernet), Toast.LENGTH_LONG).show();
                          gps.stopUsingGPS();
                 	 }
              	     	}
                
                 
              catch(Exception e) {
-            	 Log.v("MAIL", "NOT SENT - CAUSE ERROR" + e);
-            	 Toast.makeText(getApplicationContext(), getResources().getString(R.string.nointernet), Toast.LENGTH_LONG).show();
+            //	 Log.v("MAIL", "NOT SENT - CAUSE ERROR" + e);
+        //    	 Toast.makeText(getApplicationContext(), getResources().getString(R.string.nointernet), Toast.LENGTH_LONG).show();
                  gps.stopUsingGPS();
              }    		
         	}
@@ -228,7 +229,7 @@ import android.widget.Toast;
          //   gps.showSettingsAlert();
         if (kk > 0) {
         	Toast.makeText(getApplicationContext(), getResources().getString(R.string.ggg) + kk, Toast.LENGTH_LONG).show();
-        	Log.v("KKKKKKKKKK", "is - " + kk);
+     //   	Log.v("KKKKKKKKKK", "is - " + kk);
         	kk--;
             mHandlerTime.removeCallbacks(mUpdateTimeTask);
             mHandlerTime.postDelayed(mUpdateTimeTask, 30000);

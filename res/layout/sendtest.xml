@@ -13,8 +13,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:text="@string/sendtesttv"
-        android:textSize="20sp"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/GREY"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/yes"
