@@ -53,6 +53,7 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int checkboxMail=0x7f050005;
         public static final int checkboxSms=0x7f050006;
+        public static final int ggg=0x7f050016;
         public static final int gps=0x7f050015;
         public static final int gpsalerttest=0x7f05000d;
         public static final int gpsoffed=0x7f05000b;

@@ -23,4 +23,5 @@
 	<string name="hintsmsph">international phone num.</string>
 	<string name="hintsmsiswr">Typed phone num. is invalid</string>
 	<string name="gps">GPS is </string>
+	<string name="ggg">GPS or aGPS is not available! Please Enable it in your Settings. Attempts remaining &#8230; </string>
 </resources>

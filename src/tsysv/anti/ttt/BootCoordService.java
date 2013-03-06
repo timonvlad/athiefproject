@@ -1,13 +1,9 @@
 package tsysv.anti.ttt;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.IBinder;
-import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.widget.Toast;
 
 
@@ -64,11 +60,12 @@ import android.widget.Toast;
           
          }else{
 
-            gps.showSettingsAlert();
+       //     gps.showSettingsAlert();
+            mHandlerTime.removeCallbacks(mUpdateTimeTask);
+    		mHandlerTime.postDelayed(mUpdateTimeTask, 30000);
 
         }
-     	mHandlerTime.removeCallbacks(mUpdateTimeTask);
-		mHandlerTime.postDelayed(mUpdateTimeTask, 30000);
+     	
 
 	}    
    

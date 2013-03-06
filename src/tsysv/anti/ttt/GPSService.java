@@ -3,7 +3,10 @@ package tsysv.anti.ttt;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.os.IBinder;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -15,8 +18,32 @@ import android.widget.Toast;
 		GPSTracker gps;
 		SendEmailAsyncTask emailTask;
 		String longitude, latitude, coo;
+		int kk = 5;
+		private Handler mHandlerTime = new Handler();
+		public static boolean delayedAgainHour = false;
 
 		
+	   	
+	   	Runnable  mUpdateTimeTask = new Runnable() {             
+	        public void run() {
+	            if(delayedAgainHour)
+	            {
+	            
+	            }
+	            else
+	            {
+	            	if (isNetworkAvailable()){
+	            		bootsend();
+	            	}
+	            	else{
+	            		Toast.makeText(getApplicationContext(), getResources().getString(R.string.nointernet), Toast.LENGTH_LONG).show();
+	            		mHandlerTime.removeCallbacks(mUpdateTimeTask);
+	            		mHandlerTime.postDelayed(mUpdateTimeTask, 30000);
+	            	}
+	            }                   
+	        }
+	    };	
+	    
 	@Override
 	public IBinder onBind(Intent intent) {
 	        return null;
@@ -31,6 +58,7 @@ import android.widget.Toast;
 	@Override
 	public void onDestroy() {
 	 	super.onDestroy();
+	 	mHandlerTime.removeCallbacks(mUpdateTimeTask);
 	}
     
 	@Override
@@ -69,51 +97,16 @@ import android.widget.Toast;
 	        }
         }
         else if (IntentString.equals("GPS_BOOT")){
-        	gps = new GPSTracker(tsysv.anti.ttt.GPSService.this);
-        	 
-            // check if GPS enabled
-            if(gps.canGetLocation()){
-
-                double latitude = gps.getLatitude();
-                double longitude = gps.getLongitude();
-
-                // \n is for new line
-             //   Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " 
-             //   + longitude, Toast.LENGTH_LONG).show();
-                
-                getSharedPreferences("antithief", MODE_PRIVATE).edit()
-				.putString("gpscoord", "http://maps.google.ru/maps?q=" + latitude + "," + longitude)
-				.commit();
-                
-                Boolean checked_sms = getSharedPreferences("antithief", MODE_PRIVATE)
-	    				.getBoolean("checkedsms", false);
-	    		Boolean checked_mail = getSharedPreferences("antithief", MODE_PRIVATE)
-	    				.getBoolean("checkedmail", false);
-	    		if (checked_sms){
-	    			sendSMS(getSharedPreferences("antithief", MODE_PRIVATE).getString("phone", " "),
-	    					getSharedPreferences("antithief", MODE_PRIVATE).getString("gpscoord", " "));
-	    		//	Log.v("CHECK", " SMS");
-	    			
-	    		}
-	    		if(checked_mail) {
-	    		//	Log.v("CHECK", " MAIL");
-	    			emailTask = new SendEmailAsyncTask();
-				 	emailTask.execute();
-	    		}
-	    		else{
-	    		//	Log.v("CHECK", " stopped");
-	    			stopSelf();
-	    		}
-                
-                
-          
-             }else{
-                // can't get location
-                // GPS or Network is not enabled
-                // Ask user to enable GPS/network in settings
-                gps.showSettingsAlert();
-              //  finish();
-            }
+        	
+        	if (isNetworkAvailable()){
+        		bootsend();
+        		
+        	}else{
+        		mHandlerTime.removeCallbacks(mUpdateTimeTask);
+        		mHandlerTime.postDelayed(mUpdateTimeTask, 30000);
+        	}
+        	
+        	
         }
     }
 
@@ -139,6 +132,7 @@ import android.widget.Toast;
                 	 } 
                 	 else {
                 		 Log.v("MAIL", "NOT SENT");
+                		 Toast.makeText(getApplicationContext(), getResources().getString(R.string.nointernet), Toast.LENGTH_LONG).show();
                          gps.stopUsingGPS();
                 	 }
              	     	}
@@ -146,6 +140,7 @@ import android.widget.Toast;
                 
              catch(Exception e) {
             	 Log.v("MAIL", "NOT SENT - CAUSE ERROR" + e);
+            	 Toast.makeText(getApplicationContext(), getResources().getString(R.string.nointernet), Toast.LENGTH_LONG).show();
                  gps.stopUsingGPS();
              }    		
         	}
@@ -178,6 +173,71 @@ import android.widget.Toast;
 
     }    
 
- 	
- 	
+    private boolean isNetworkAvailable() {
+	    ConnectivityManager connectivityManager 
+	          = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+	    return activeNetworkInfo != null;
+	}
+///////////////////////////////////
+    private void bootsend(){
+
+		gps = new GPSTracker(tsysv.anti.ttt.GPSService.this);
+   	 
+        // check if GPS enabled
+        if(gps.canGetLocation()){
+
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+
+            if (latitude == 0.0 && longitude == 0.0) {
+            	Log.v("GPS", "is - NULL!!!!!!!!!!!!!!!!!!!!!" );
+            	 mHandlerTime.removeCallbacks(mUpdateTimeTask);
+                 mHandlerTime.postDelayed(mUpdateTimeTask, 30000);
+            }else{
+            	getSharedPreferences("antithief", MODE_PRIVATE).edit()
+    			.putString("gpscoord", "http://maps.google.ru/maps?q=" + latitude + "," + longitude)
+    			.commit();
+                
+                Boolean checked_sms = getSharedPreferences("antithief", MODE_PRIVATE)
+        				.getBoolean("checkedsms", false);
+        		Boolean checked_mail = getSharedPreferences("antithief", MODE_PRIVATE)
+        				.getBoolean("checkedmail", false);
+        		if (checked_sms){
+        			sendSMS(getSharedPreferences("antithief", MODE_PRIVATE).getString("phone", " "),
+        					getSharedPreferences("antithief", MODE_PRIVATE).getString("gpscoord", " "));
+        		//	Log.v("CHECK", " SMS");
+        			
+        		}
+        		if(checked_mail) {
+        		//	Log.v("CHECK", " MAIL");
+        			emailTask = new SendEmailAsyncTask();
+    			 	emailTask.execute();
+        		}
+        		else{
+        		//	Log.v("CHECK", " stopped");
+        			stopSelf();
+        		}
+                
+            }
+            
+         }else{
+            // can't get location
+            // GPS or Network is not enabled
+            // Ask user to enable GPS/network in settings
+         //   gps.showSettingsAlert();
+        if (kk > 0) {
+        	Toast.makeText(getApplicationContext(), getResources().getString(R.string.ggg) + kk, Toast.LENGTH_LONG).show();
+        	Log.v("KKKKKKKKKK", "is - " + kk);
+        	kk--;
+            mHandlerTime.removeCallbacks(mUpdateTimeTask);
+            mHandlerTime.postDelayed(mUpdateTimeTask, 30000);
+           }else{
+        	   Toast.makeText(getApplicationContext(), getApplicationContext().getResources()
+        			   .getString(R.string.gpsoffed), Toast.LENGTH_SHORT).show();
+        	   stopSelf();
+           }
+        }
+	
+    }
 }
