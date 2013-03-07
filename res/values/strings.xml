@@ -9,7 +9,7 @@
     <string name="cancel">Cancel</string>
     <string name="checkboxMail">Send GPS to e-mail</string>
     <string name="checkboxSms">Send GPS by sms</string>
-    <string name="mainscreenAbout">Every time your phone is switched on - application writes gps-coordinates on SD-card of your phone. And then according to your Settings, sends them by mail or(and) by sms &#8230;</string>
+    <string name="mainscreenAbout">Every time your phone is switched on - application writes gps-coordinates of your phone. And then according to your Settings, sends them by mail or(and) by sms &#8230;</string>
 	<string name="maincheckboxerror">No sending parameteres are checked in CheckBoxes!</string>
 	<string name="mailsendset">E-mail send settings</string>
 	<string name="smssendset">Sms send settings</string>

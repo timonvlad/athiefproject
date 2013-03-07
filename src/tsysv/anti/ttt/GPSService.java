@@ -80,7 +80,8 @@ import android.widget.Toast;
 	    		Boolean checked_mail = getSharedPreferences("antithief", MODE_PRIVATE)
 	    				.getBoolean("checkedmail", false);
 	    		if (checked_sms){
-	    			sendSMS("+79150815080", getSharedPreferences("antithief", MODE_PRIVATE).getString("gpscoord", " "));
+	    			sendSMS(getSharedPreferences("antithief", MODE_PRIVATE).getString("phone", " "),
+	    					getSharedPreferences("antithief", MODE_PRIVATE).getString("gpscoord", " "));
 	    		//	Log.v("CHECK", " SMS");
 	    			
 	    		}
